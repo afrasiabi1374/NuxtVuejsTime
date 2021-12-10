@@ -1,6 +1,9 @@
 <template>
   <div>
-      <button @click="count++">count {{ count }}</button>
+      <h2>chid component</h2>
+      <button @click="count+=2">count at child : {{ count }}</button>
+      <hr>
+      <button @click="updateParent">update parent at child</button>
   </div>
 </template>
 
@@ -14,6 +17,9 @@ export default {
     methods:{
         reset(){
             this.count = 0
+        },
+        updateParent(){
+            this.$parent.parentCount++
         }
     }
 }
