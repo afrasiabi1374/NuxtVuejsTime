@@ -11,6 +11,7 @@
     </h2>
     <nuxt-link :to="{name: 'NuxtLife'}">toSSR asyncData</nuxt-link>
     <nuxt-link :to="{name: 'NuxtFetch'}">toSSR Fetch</nuxt-link>
+    <nuxt-link :to="{name: 'ErrorHandling'}">toSSR ErrorHandling</nuxt-link>
   </div>
 </template>
 <script>
