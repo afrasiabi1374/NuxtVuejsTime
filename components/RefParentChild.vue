@@ -1,6 +1,5 @@
 <template>
   <div>
-      <p>ref parent child</p>
       <button @click="count++">count {{ count }}</button>
   </div>
 </template>
