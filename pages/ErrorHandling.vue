@@ -4,7 +4,7 @@
             loading...
         </div>
         <div v-else-if="$fetchState.error">
-        /* حالت ‌B*/   {{ $fetchState.error.message }} 
+            {{ $fetchState.error.message }}
         </div>
         <h2 v-else>
           {{ title }}
@@ -18,27 +18,23 @@ export default {
         return{
             title: ''
         }
-    },    
-fetch(){
-    return this.$axios
-    .$get('https://jsonplaceholder.typicode.com/todosfdfghfgf/1')
-    .then((res)=>{
-        this.title = res.title
-    })
-    .catch((e)=>{
-        console.log(e)
-        const statusCode = e?.response?.status||500
-        const message=e?.response?.statusCode||'oops error'
-    //   Aارور تمام صفحه
-    //     if (process.server) {
-    //         this.$nuxt.contex.res.statusCode = statusCode
-    //     }
-    // this.$nuxt.error({statusCode ,message});
-
-    //  B  ارور  در قالب متن
-    throw new Error(`${message} ${statusCode}`)
-    })
-}
+    },
+    fetch(){
+        return this.$axios
+        .$get('https://jsonplaceholder.typicode.com/todos/kharab1')
+        .then((response)=>{
+            this.title = response.title
+        })
+        .catch((e)=>{
+             const statusCode = e?.response?.status||500
+             const message = e?.response?.statusText||'there is an error'
+            // if(process.server){
+            //     this.$nuxt.context.res.statusCode = statusCode
+            //     this.$nuxt.error({statusCode, message})
+            // }
+            throw new Error(`${ message } => ${statusCode}`)
+        })
+    }
 }
 </script>
 

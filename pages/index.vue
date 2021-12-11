@@ -10,7 +10,9 @@
       <nuxt-link to="events">events</nuxt-link>
     </h2>
     <nuxt-link :to="{name: 'NuxtLife'}">toSSR asyncData</nuxt-link>
+    <br><br>
     <nuxt-link :to="{name: 'NuxtFetch'}">toSSR Fetch</nuxt-link>
+    <br><br>
     <nuxt-link :to="{name: 'ErrorHandling'}">toSSR ErrorHandling</nuxt-link>
   </div>
 </template>
