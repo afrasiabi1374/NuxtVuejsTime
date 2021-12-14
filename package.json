@@ -16,6 +16,7 @@
     "core-js": "^3.15.1",
     "node-sass": "^7.0.0",
     "nuxt": "^2.15.7",
+    "qs": "^6.10.2",
     "sass-loader": "^12.4.0"
   },
   "devDependencies": {

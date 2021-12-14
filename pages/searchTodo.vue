@@ -2,7 +2,7 @@
   <div>
       <h1 class="title">search to do</h1>
       <input type="text" :value="title" @input="onInput">
-      <p v-if="loading" class="loader"></p>
+      <p v-if="loading" class="loader">Loading...</p>
       <ul v-else>
           <li v-for="item in list" :key="item.id">{{ item }}</li>
       </ul>
@@ -43,7 +43,7 @@ export default {
             )
             .then((res)=>{
                 this.list = res
-                this.loading = false
+                this.loading--
             })
             .catch((e)=>{
                 this.loading--

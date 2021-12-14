@@ -14,6 +14,11 @@
     <nuxt-link :to="{name: 'NuxtFetch'}">toSSR Fetch</nuxt-link>
     <br><br>
     <nuxt-link :to="{name: 'ErrorHandling'}">toSSR ErrorHandling</nuxt-link>
+    <br>
+    <br>
+    <br>
+    <nuxt-link :to="{name: 'NuxtMiddleware'}">middleware</nuxt-link>
+    
   </div>
 </template>
 <script>

@@ -50,5 +50,18 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  router:{
+    
+  //   /// کانفیگ qs
+  //   parseQuery(query){
+  //     return require('qs').parse(query)
+  //   },
+  //   stringifyQuery(query){
+  //     const result = require('qs').stringify(query)
+  //     return result? '?' + result : ''
+  //   }
+  //    /// پایان کانفیگ qs
+  middleware:['apiMiddleware']
   }
 }
