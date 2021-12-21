@@ -34,7 +34,8 @@ export default {
                 alert('num must be smaler than ' + this.maxVal)
             }
         },
-        mines(){
+        mines(context){
+            console.log(context)
             if (this.value-1 >= this.minVal) {
                 this.$emit('change', this.value-1)
             }else if(this.value <= this.minVal){

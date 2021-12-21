@@ -18,6 +18,10 @@
     <br>
     <br>
     <nuxt-link :to="{name: 'NuxtMiddleware'}">middleware</nuxt-link>
+    <br>
+    <br>
+    <br>
+    <nuxt-link to="/Async-components">Async-components</nuxt-link>
     
   </div>
 </template>

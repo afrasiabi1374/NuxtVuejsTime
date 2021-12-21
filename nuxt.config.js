@@ -1,3 +1,4 @@
+import fa from './utility/i18n/fa'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -21,8 +22,10 @@ export default {
   // plugins: [{src:'~/plugins/myPlugin', mode: 'client'}],
   plugins: 
   [
-    '~/plugins/myPlugin.client',
-    '~/plugins/myPlugin2'
+    '~/plugins/myPlugin',
+    '~/plugins/veeValidate',
+    '~/plugins/i18n',
+    '~/plugins/mixin',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,8 +43,23 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/i18n'
   ],
-
+  i18n: {
+    locales: [
+      {
+        code: 'fa',
+        name: 'Persian',
+      },
+    ],
+    defaultLocale: 'fa',
+    vueI18n: {
+      fallbackLocale: 'fa',
+      messages: {
+        fa: fa.messages,
+      },
+    },
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -54,6 +72,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vee-validate/dist/rules']
   },
   router:{
     
