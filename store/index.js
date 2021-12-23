@@ -1,40 +1,31 @@
-export  const state = () => {
+import {uaParser} from '../helpers/ua.js'
+
+const getDefaultState = () => {
     return {
-        data:null,
-        loading:true
+        ua: {
+            isMobile: false,
+            isChrome: false,
+            isTablet: false
+        }
     }
 }
+export const state = getDefaultState
 
 export const mutations = {
-    SET_DATA(state, payload){
-        state.data = payload
-    },
-    SET_LOADING(state,payload){
-        state.loading =  payload
+    UPDATE_USER_AGENT(state, payload) {
+        state.ua = payload
     }
 }
 
 export const actions = {
-    fetchData({commit}) {
-        commit('SET_LOADING', true)
-        return this.$axios
-        .$get('https://jsonplaceholder.typicode.com/albums')
-        .then((response)=>{
-            console.log(response)
-            commit("SET_DATA", response)
-        }).catch((e)=>{
-            console.log(e)
-        }).finally(()=>{
-            commit('SET_LOADING', false)
-        })
-    }
-}
+    nuxtServerInit({commit}, {req}){
+        const userAgent = req.headers['user-agent']
+        const { isMobile, isChrome, isTablet } = uaParser(userAgent)
 
-export const getters = {
-    getData(state){
-        return state.data
-    },
-    getLoading(state){
-        return state.loading
+        commit('UPDATE_USER_AGENT', {
+            isMobile,
+            isChrome,
+            isTablet
+        })
     }
 }
