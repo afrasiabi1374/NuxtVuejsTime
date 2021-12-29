@@ -30,8 +30,9 @@ export default {
              const message = e?.response?.statusText||'there is an error'
             // if(process.server){
             //     this.$nuxt.context.res.statusCode = statusCode
-            //     this.$nuxt.error({statusCode, message})
             // }
+            //     this.$nuxt.error({statusCode, message})
+
             throw new Error(`${ message } => ${statusCode}`)
         })
     }
