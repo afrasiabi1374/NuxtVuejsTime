@@ -36,10 +36,11 @@
 </template>
 
 <script>
-import AppTextInput from '../components/UI/AppTextInput.vue'
-import AppForm from '../components/UI/AppForm.vue'
+import AppTextInput from '~/components/UI/AppTextInput.vue'
+import AppForm from '~/components/UI/AppForm.vue'
 
 export default {
+  name: 'CREATE',
   components: {
       AppTextInput,
       AppForm

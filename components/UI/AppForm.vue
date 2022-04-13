@@ -21,12 +21,16 @@ export default {
   },
   methods: {
     addError(key, value) {
-      this.$refs.validation.setErrors({
-        [key]: value,
-      })
+      try{
+        this.$refs.validation.setErrors({
+          [key]: value
+        })
+      }
+      catch(e){
+        console.log(e)
+      }
     },
     reset() {
-      console.log('reset called', this.$ref)
       this.$refs.validation.reset()
     },
   },

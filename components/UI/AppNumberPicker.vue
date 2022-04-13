@@ -1,51 +1,39 @@
 <template>
   <div>
-      <button @click="mines">mines-</button>
-      {{ value }}
-      <button @click="plus">plus+</button>
+    <button @click="minus">minus</button>
+    {{ value }}
+    <button @click="plus">plus</button>
   </div>
 </template>
 
 <script>
 export default {
-    model:{
-        prop:'value',
-        event:'change'
+  name: 'AppNumberPicker',
+  model: {
+    prop: 'value',
+    event: 'change',
+  },
+  props: {
+    value: {
+      type: Number,
+      required: true,
     },
-    props:{
-        value:{
-            type:Number,
-            required:true
-        },
-        minVal:{
-            type:Number,
-            default:0
-        },
-        maxVal:{
-            type:Number,
-            default:10
-        },
+    minValue: {
+      type: Number,
+      default: 0,
     },
-    methods:{
-        plus(){
-            if (this.value < this.maxVal) {
-                this.$emit('change', this.value+1)
-            }else if(this.value >= this.maxVal){
-                alert('num must be smaler than ' + this.maxVal)
-            }
-        },
-        mines(context){
-            console.log(context)
-            if (this.value-1 >= this.minVal) {
-                this.$emit('change', this.value-1)
-            }else if(this.value <= this.minVal){
-                alert('num must be bigger than '+ this.minVal)
-            }
-        }
-    }
+  },
+  methods: {
+    plus() {
+      this.$emit('change', this.value + 1)
+    },
+    minus() {
+      if (this.value - 1 >= this.minValue) {
+        this.$emit('change', this.value - 1)
+      }
+    },
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style scoped></style>

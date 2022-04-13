@@ -1,4 +1,5 @@
 import fa from './utility/i18n/fa'
+import qs from "qs"
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -26,6 +27,8 @@ export default {
     '~/plugins/veeValidate',
     '~/plugins/i18n',
     '~/plugins/mixin',
+    '~/plugins/axios'
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,7 +46,9 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxtjs/axios'
+
   ],
   i18n: {
     locales: [
@@ -72,18 +77,18 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vee-validate/dist/rules']
+    transpile: ['vee-validate/dist/rules'],
   },
   router:{
     
-  //   /// کانفیگ qs
-  //   parseQuery(query){
-  //     return require('qs').parse(query)
-  //   },
-  //   stringifyQuery(query){
-  //     const result = require('qs').stringify(query)
-  //     return result? '?' + result : ''
-  //   }
+  // واسه اینکه کوءری استرینگ هامونو مثل پی اچ پی بزنیم  /// کانفیگ qs
+    parseQuery(query){
+      return require('qs').parse(query)
+    },
+    stringifyQuery(query){
+      const result = require('qs').stringify(query)
+      return result? '?' + result : ''
+    },
   //    /// پایان کانفیگ qs
   middleware:['apiMiddleware']
   }
