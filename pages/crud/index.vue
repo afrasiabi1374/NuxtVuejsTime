@@ -5,7 +5,7 @@
         create
       </h1>
     </nuxt-link>
-    <crud-filter-form @onSubmit="service"></crud-filter-form>
+    <!-- <crud-filter-form @onSubmit="service"></crud-filter-form> -->
     <template v-if="$fetchState.pending">
       <div>loading...</div>
     </template>
@@ -37,9 +37,9 @@
 </template>
 
 <script>
-import CrudFilterForm from '../../.nuxt/components/views/crud/CrudFilterForm.vue'
+// import CrudFilterForm from '../../../components/views/crud/CrudFilterForm.vue'
 export default {
-  components: { CrudFilterForm },
+  // components: { CrudFilterForm },
   name: 'CrudIndex',
   fetch() {
     return this.service()

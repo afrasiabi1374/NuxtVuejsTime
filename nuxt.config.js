@@ -47,8 +47,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/i18n',
-    '@nuxtjs/axios'
-
+    
   ],
   i18n: {
     locales: [
