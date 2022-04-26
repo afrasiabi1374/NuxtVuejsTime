@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import { state } from './index';
 
 const TOKEN_LOCAL_KEY = 'key_for_cookie'
 const getDefaultState = () => {
@@ -14,7 +13,8 @@ const getDefaultState = () => {
 
 export const state = getDefaultState
 export const getters = {
-    isAuthnticated(state) {
+    isAuthenticated(state) {
+        // اگر نال نبود برگردون
         return state.data.token !== null
     },
     getToken(state) {
@@ -27,6 +27,7 @@ export const getters = {
 
 export const mutations = {
     SET_TOKEN(state, payload) {
+        // آبجکتو بریز تو ی دیتا / اور رایت کن 
         Vue.set(state, 'data', payload)
     },
     CLEAR_TOKEN(state) {
@@ -35,7 +36,7 @@ export const mutations = {
 }
 
 export const actions = {
-    saveToken({commit}, {access_token, refresh_token, expires_in}) {
+    saveToken({ commit }, { access_token, refresh_token, expires_in } ) {
         const expire = new Date().getTime() + Number.parseInt(expires_in) * 1000
         const tokenData = {
             token: access_token,
@@ -47,19 +48,20 @@ export const actions = {
 
         this.$cookies.set(TOKEN_LOCAL_KEY, tokenData, {
             path: '/',
+            // صدو هشتاد روز
             maxAge: 60 * 60 * 24 * 180
         })
 
     },
 
-    initAuth({dispatch, commit}) {
+    initAuth({commit}) {
         const tokenData = this.$cookies.get(TOKEN_LOCAL_KEY)
         if (tokenData?.token) {
             commit('SET_TOKEN', tokenData)
         }
     },
 
-    clearToken({commit, dispatch}){
+    clearToken({ commit }){
         commit('CLEAR_TOKEN')
         this.$cookies.remove(TOKEN_LOCAL_KEY, {path: '/'})
     },

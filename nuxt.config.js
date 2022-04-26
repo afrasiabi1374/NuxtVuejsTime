@@ -23,12 +23,12 @@ export default {
   // plugins: [{src:'~/plugins/myPlugin', mode: 'client'}],
   plugins: 
   [
+    '~/plugins/checkRoutes',
     '~/plugins/myPlugin',
     '~/plugins/veeValidate',
     '~/plugins/i18n',
     '~/plugins/mixin',
     '~/plugins/axios'
-
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -42,12 +42,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/proxy',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/i18n',
-    
+    'cookie-universal-nuxt'
+  
   ],
   i18n: {
     locales: [
@@ -66,6 +68,18 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+  proxy: {
+    '/api': 'https://acm.academyland.net/', //use username:user and password:123456 for authentication
+  },
+
+  env: {
+    baseUrl: 'http://' + 'localhost:3000' + '/api/web',
+    authRoutes: [
+      '/crud',
+      { regex: [/\/profile/.source] },
+      { regex: [/\/user\//.source] }
+    ]
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -78,8 +92,8 @@ export default {
   build: {
     transpile: ['vee-validate/dist/rules'],
   },
-  router:{
-    
+  router: {
+    middleware: ['load-auth'],
   // واسه اینکه کوءری استرینگ هامونو مثل پی اچ پی بزنیم  /// کانفیگ qs
     parseQuery(query){
       return require('qs').parse(query)
@@ -89,6 +103,5 @@ export default {
       return result? '?' + result : ''
     },
   //    /// پایان کانفیگ qs
-  middleware:['apiMiddleware']
   }
 }
