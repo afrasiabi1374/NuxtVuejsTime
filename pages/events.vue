@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted(){
-      this.$nuxt.$on('login', this.loging)
+    this.$nuxt.$on('login', this.loging)
   },
   destroyed(){
       this.$nuxt.$off(this.loging)

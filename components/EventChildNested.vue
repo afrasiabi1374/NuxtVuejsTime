@@ -1,7 +1,10 @@
 <template>
   <div>
         <h1>count is {{ x }}</h1>
-      deep button
+      event_bus btn =><button @click="submit">
+        deep button event bus
+      </button>
+      <hr>
       <button @click="x++">plus inject</button>
       <h1 >attrs $attr is {{ $attrs }}</h1>
         my name is =->>>>>>>>>{{ name }}
@@ -19,9 +22,9 @@ data(){
     }
 },
 methods:{
-    submit(){
-        this.$nuxt.$emit('login', "iam login to your site :)))")
-    }
+  submit(){
+    this.$nuxt.$emit('login', "EVENT BUS MSG =======>> iam login to your site jakesh :)))")
+  }
 },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <event-child-nested name='reza' familly="shojaei" :birth="1385" />
+      <event-child-nested name='mostafa' familly="shirazizade" :birth="1385" />
       <hr/>
       <p>event Child</p>
       <button>submit</button>
