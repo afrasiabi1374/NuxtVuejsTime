@@ -54,10 +54,10 @@ export default {
     async service (params = {}) {        
       this.loading = true
       try {    
-        this.posts = await this.$axios
-        .$get(
+        this.posts = await this.$api
+        ._get(
           'https://jsonplaceholder.typicode.com/posts',
-          {params}
+          { params }
         )
       } catch (error) {
         console.log(error)

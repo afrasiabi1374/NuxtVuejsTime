@@ -1,13 +1,13 @@
 <template>
   <div>
-        <h1>count is {{ x }}</h1>
-      event_bus btn =><button @click="submit">
-        deep button event bus
-      </button>
-      <hr>
-      <button @click="x++">plus inject</button>
-      <h1 >attrs $attr is {{ $attrs }}</h1>
-        my name is =->>>>>>>>>{{ name }}
+    <h1>count is {{ x }}</h1>
+    event_bus btn =><button @click="submit">
+      deep button event bus
+    </button>
+    <hr>
+    <button @click="x++">plus inject</button>
+    <h1 >attrs $attr is {{ $attrs }}</h1>
+    my name is =->>>>>>>>>{{ name }}
   </div>
 </template>
 
@@ -17,9 +17,9 @@ inheritAttrs:false,
 props:['name'],
 inject:['count'],
 data(){
-    return{
-        x:this.count
-    }
+  return{
+    x:this.count
+  }
 },
 methods:{
   submit(){

@@ -1,9 +1,8 @@
 import Vue from 'vue'
-
 const TOKEN_LOCAL_KEY = 'key_for_cookie'
 const getDefaultState = () => {
     return {
-        data:{
+        data: {
             token: null,
             expire: null,
             refresh: null
@@ -61,12 +60,12 @@ export const actions = {
         }
     },
 
-    clearToken({ commit }){
+    clearToken({ commit }) {
         commit('CLEAR_TOKEN')
         this.$cookies.remove(TOKEN_LOCAL_KEY, {path: '/'})
     },
 
-    logout({dispatch}){
+    logout({dispatch}) {
         dispatch('clearToken')
         window.location.replace('/')
     }

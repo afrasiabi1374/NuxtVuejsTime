@@ -10,6 +10,9 @@
 <script>
     export default {
         name: 'Token',
+        asyncData({store}) {
+            store.dispatch('auth/initAuth')
+        },
         methods: {
             saveToken(){
                 this.$store.dispatch('auth/saveToken', {

@@ -1,7 +1,7 @@
 import qs from "qs"
 import { handleErrors, handleResponse } from "../helpers/responseHelper.js"
 
-export default function ({ $axios,...context }, inject) {
+export default function ({store,$axios,...context }, inject) {
   // Create a custom axios instance
   const api = $axios.create({
     headers: {
@@ -16,6 +16,10 @@ export default function ({ $axios,...context }, inject) {
 
   // Set baseURL to something different
   api.setBaseURL('http://ali74.mocklab.io')
+
+  api.onRequest((config) => {
+    config.headers.Authorization = 'Bearer' + store.getters['auth/getToken']
+  })
 
   api._post = function (url, body, config = {}) {
     const {cc, ...requestConfig} = config

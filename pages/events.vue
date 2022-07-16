@@ -28,9 +28,9 @@ export default {
       this.$nuxt.$off(this.loging)
   },
   methods:{
-      loging(param){
-            console.log(param);
-      }
+    loging(param){
+      console.log(param);
+    }
   }
 }
 </script>
