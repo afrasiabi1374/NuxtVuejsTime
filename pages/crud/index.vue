@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <nuxt-link to="/">home</nuxt-link>
     <nuxt-link :to="localePath({name: 'crud-Create'})">
       <h1 class="create">
         create
@@ -54,7 +55,7 @@ export default {
     async service (params = {}) {        
       this.loading = true
       try {    
-        this.posts = await this.$api
+        this.posts = await this.$auth
         ._get(
           'https://jsonplaceholder.typicode.com/posts',
           { params }

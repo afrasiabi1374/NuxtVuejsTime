@@ -1,25 +1,21 @@
 import qs from "qs"
 import { handleErrors, handleResponse } from "../helpers/responseHelper.js"
-
-export default function ({store,$axios,...context }, inject) {
-  // Create a custom axios instance
+const createInstance = ({$axios, ...context}) => {
   const api = $axios.create({
     headers: {
       common: {
         Accept: 'application/json'
       }
     },
-      paramsSerializer: (params)=>{
-        return qs.stringify(params, {arrayFormat: 'brackets'})
-      }
+    paramsSerializer: (params)=>{
+      return qs.stringify(params, {arrayFormat: 'brackets'})
+    }
   })
 
   // Set baseURL to something different
   api.setBaseURL('http://ali74.mocklab.io')
 
-  api.onRequest((config) => {
-    config.headers.Authorization = 'Bearer' + store.getters['auth/getToken']
-  })
+
 
   api._post = function (url, body, config = {}) {
     const {cc, ...requestConfig} = config
@@ -44,6 +40,17 @@ export default function ({store,$axios,...context }, inject) {
       handleErrors(e, cc, context)
     })
   }    
+  return api
+}
+export default function (context, inject) {
+  const {store} =  context
+  // Create a custom axios instance
+  const api  = createInstance(context)
+  const auth = createInstance(context)
+  auth.onRequest((config) => {
+    config.headers.Authorization = 'Bearer ' + store.getters['auth/getToken']
+  })
   // Inject to context as $api
   inject('api', api)
+  inject('auth', auth)
 }

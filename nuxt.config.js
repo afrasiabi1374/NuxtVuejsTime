@@ -93,7 +93,7 @@ export default {
     transpile: ['vee-validate/dist/rules'],
   },
   router: {
-    middleware: ['load-auth'],
+    middleware: ['load-auth', 'load-user-data'],
   // واسه اینکه کوءری استرینگ هامونو مثل پی اچ پی بزنیم  /// کانفیگ qs
     parseQuery(query){
       return require('qs').parse(query)

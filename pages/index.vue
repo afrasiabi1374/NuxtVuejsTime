@@ -22,7 +22,9 @@
     <br>
     <br>
     <nuxt-link to="/Async-components">Async-components</nuxt-link>
-    
+    <h1>
+      <nuxt-link to="/crud">CRUD</nuxt-link>
+    </h1>
   </div>
 </template>
 <script>
